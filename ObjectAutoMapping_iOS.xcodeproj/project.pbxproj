@@ -12,11 +12,11 @@
 		DA39AD7B1A3FD0D900E52205 /* JosnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD741A3FD0D900E52205 /* JosnModel.m */; };
 		DA39AD7C1A3FD0D900E52205 /* JsonShipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD761A3FD0D900E52205 /* JsonShipModel.m */; };
 		DA39AD7D1A3FD0D900E52205 /* RelationShipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD781A3FD0D900E52205 /* RelationShipModel.m */; };
-		DA39AD891A3FD81400E52205 /* ObjectAttributeMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD801A3FD81400E52205 /* ObjectAttributeMapping.m */; };
-		DA39AD8A1A3FD81400E52205 /* ObjectAttributeTransformator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD821A3FD81400E52205 /* ObjectAttributeTransformator.m */; };
-		DA39AD8B1A3FD81400E52205 /* ObjectAutoMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD841A3FD81400E52205 /* ObjectAutoMapping.m */; };
-		DA39AD8C1A3FD81400E52205 /* ObjectContainRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD861A3FD81400E52205 /* ObjectContainRelationshipMapping.m */; };
-		DA39AD8D1A3FD81400E52205 /* ObjectMappingError.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD881A3FD81400E52205 /* ObjectMappingError.m */; };
+		DA39AD991A3FE30800E52205 /* ObjectAttributeMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD901A3FE30800E52205 /* ObjectAttributeMapping.m */; };
+		DA39AD9A1A3FE30800E52205 /* ObjectAttributeTransformator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD921A3FE30800E52205 /* ObjectAttributeTransformator.m */; };
+		DA39AD9B1A3FE30800E52205 /* ObjectAutoMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD941A3FE30800E52205 /* ObjectAutoMapping.m */; };
+		DA39AD9C1A3FE30800E52205 /* ObjectContainRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD961A3FE30800E52205 /* ObjectContainRelationshipMapping.m */; };
+		DA39AD9D1A3FE30800E52205 /* ObjectMappingError.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39AD981A3FE30800E52205 /* ObjectMappingError.m */; };
 		DA472D751A3FCFD2000B3E55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA472D741A3FCFD2000B3E55 /* main.m */; };
 		DA472D781A3FCFD2000B3E55 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA472D771A3FCFD2000B3E55 /* AppDelegate.m */; };
 		DA472D7B1A3FCFD2000B3E55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA472D7A1A3FCFD2000B3E55 /* ViewController.m */; };
@@ -45,16 +45,16 @@
 		DA39AD761A3FD0D900E52205 /* JsonShipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonShipModel.m; sourceTree = "<group>"; };
 		DA39AD771A3FD0D900E52205 /* RelationShipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationShipModel.h; sourceTree = "<group>"; };
 		DA39AD781A3FD0D900E52205 /* RelationShipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationShipModel.m; sourceTree = "<group>"; };
-		DA39AD7F1A3FD81400E52205 /* ObjectAttributeMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectAttributeMapping.h; sourceTree = "<group>"; };
-		DA39AD801A3FD81400E52205 /* ObjectAttributeMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectAttributeMapping.m; sourceTree = "<group>"; };
-		DA39AD811A3FD81400E52205 /* ObjectAttributeTransformator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectAttributeTransformator.h; sourceTree = "<group>"; };
-		DA39AD821A3FD81400E52205 /* ObjectAttributeTransformator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectAttributeTransformator.m; sourceTree = "<group>"; };
-		DA39AD831A3FD81400E52205 /* ObjectAutoMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectAutoMapping.h; sourceTree = "<group>"; };
-		DA39AD841A3FD81400E52205 /* ObjectAutoMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectAutoMapping.m; sourceTree = "<group>"; };
-		DA39AD851A3FD81400E52205 /* ObjectContainRelationshipMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectContainRelationshipMapping.h; sourceTree = "<group>"; };
-		DA39AD861A3FD81400E52205 /* ObjectContainRelationshipMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectContainRelationshipMapping.m; sourceTree = "<group>"; };
-		DA39AD871A3FD81400E52205 /* ObjectMappingError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectMappingError.h; sourceTree = "<group>"; };
-		DA39AD881A3FD81400E52205 /* ObjectMappingError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectMappingError.m; sourceTree = "<group>"; };
+		DA39AD8F1A3FE30800E52205 /* ObjectAttributeMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectAttributeMapping.h; sourceTree = "<group>"; };
+		DA39AD901A3FE30800E52205 /* ObjectAttributeMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectAttributeMapping.m; sourceTree = "<group>"; };
+		DA39AD911A3FE30800E52205 /* ObjectAttributeTransformator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectAttributeTransformator.h; sourceTree = "<group>"; };
+		DA39AD921A3FE30800E52205 /* ObjectAttributeTransformator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectAttributeTransformator.m; sourceTree = "<group>"; };
+		DA39AD931A3FE30800E52205 /* ObjectAutoMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectAutoMapping.h; sourceTree = "<group>"; };
+		DA39AD941A3FE30800E52205 /* ObjectAutoMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectAutoMapping.m; sourceTree = "<group>"; };
+		DA39AD951A3FE30800E52205 /* ObjectContainRelationshipMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectContainRelationshipMapping.h; sourceTree = "<group>"; };
+		DA39AD961A3FE30800E52205 /* ObjectContainRelationshipMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectContainRelationshipMapping.m; sourceTree = "<group>"; };
+		DA39AD971A3FE30800E52205 /* ObjectMappingError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectMappingError.h; sourceTree = "<group>"; };
+		DA39AD981A3FE30800E52205 /* ObjectMappingError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectMappingError.m; sourceTree = "<group>"; };
 		DA472D6F1A3FCFD2000B3E55 /* ObjectAutoMapping_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjectAutoMapping_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA472D731A3FCFD2000B3E55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA472D741A3FCFD2000B3E55 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -103,19 +103,19 @@
 			path = MappingModel;
 			sourceTree = "<group>";
 		};
-		DA39AD7E1A3FD81400E52205 /* ObjectAutoMapping */ = {
+		DA39AD8E1A3FE30800E52205 /* ObjectAutoMapping */ = {
 			isa = PBXGroup;
 			children = (
-				DA39AD7F1A3FD81400E52205 /* ObjectAttributeMapping.h */,
-				DA39AD801A3FD81400E52205 /* ObjectAttributeMapping.m */,
-				DA39AD811A3FD81400E52205 /* ObjectAttributeTransformator.h */,
-				DA39AD821A3FD81400E52205 /* ObjectAttributeTransformator.m */,
-				DA39AD831A3FD81400E52205 /* ObjectAutoMapping.h */,
-				DA39AD841A3FD81400E52205 /* ObjectAutoMapping.m */,
-				DA39AD851A3FD81400E52205 /* ObjectContainRelationshipMapping.h */,
-				DA39AD861A3FD81400E52205 /* ObjectContainRelationshipMapping.m */,
-				DA39AD871A3FD81400E52205 /* ObjectMappingError.h */,
-				DA39AD881A3FD81400E52205 /* ObjectMappingError.m */,
+				DA39AD8F1A3FE30800E52205 /* ObjectAttributeMapping.h */,
+				DA39AD901A3FE30800E52205 /* ObjectAttributeMapping.m */,
+				DA39AD911A3FE30800E52205 /* ObjectAttributeTransformator.h */,
+				DA39AD921A3FE30800E52205 /* ObjectAttributeTransformator.m */,
+				DA39AD931A3FE30800E52205 /* ObjectAutoMapping.h */,
+				DA39AD941A3FE30800E52205 /* ObjectAutoMapping.m */,
+				DA39AD951A3FE30800E52205 /* ObjectContainRelationshipMapping.h */,
+				DA39AD961A3FE30800E52205 /* ObjectContainRelationshipMapping.m */,
+				DA39AD971A3FE30800E52205 /* ObjectMappingError.h */,
+				DA39AD981A3FE30800E52205 /* ObjectMappingError.m */,
 			);
 			path = ObjectAutoMapping;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 		DA472D711A3FCFD2000B3E55 /* ObjectAutoMapping_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				DA39AD7E1A3FD81400E52205 /* ObjectAutoMapping */,
+				DA39AD8E1A3FE30800E52205 /* ObjectAutoMapping */,
 				DA472D761A3FCFD2000B3E55 /* AppDelegate.h */,
 				DA472D771A3FCFD2000B3E55 /* AppDelegate.m */,
 				DA472D791A3FCFD2000B3E55 /* ViewController.h */,
@@ -277,14 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA39AD8A1A3FD81400E52205 /* ObjectAttributeTransformator.m in Sources */,
-				DA39AD8D1A3FD81400E52205 /* ObjectMappingError.m in Sources */,
+				DA39AD9A1A3FE30800E52205 /* ObjectAttributeTransformator.m in Sources */,
+				DA39AD9D1A3FE30800E52205 /* ObjectMappingError.m in Sources */,
 				DA39AD7C1A3FD0D900E52205 /* JsonShipModel.m in Sources */,
-				DA39AD8C1A3FD81400E52205 /* ObjectContainRelationshipMapping.m in Sources */,
+				DA39AD9C1A3FE30800E52205 /* ObjectContainRelationshipMapping.m in Sources */,
 				DA39AD7D1A3FD0D900E52205 /* RelationShipModel.m in Sources */,
 				DA472D7B1A3FCFD2000B3E55 /* ViewController.m in Sources */,
-				DA39AD891A3FD81400E52205 /* ObjectAttributeMapping.m in Sources */,
-				DA39AD8B1A3FD81400E52205 /* ObjectAutoMapping.m in Sources */,
+				DA39AD991A3FE30800E52205 /* ObjectAttributeMapping.m in Sources */,
+				DA39AD9B1A3FE30800E52205 /* ObjectAutoMapping.m in Sources */,
 				DA472D781A3FCFD2000B3E55 /* AppDelegate.m in Sources */,
 				DA39AD7A1A3FD0D900E52205 /* CustomJsonModel.m in Sources */,
 				DA39AD7B1A3FD0D900E52205 /* JosnModel.m in Sources */,

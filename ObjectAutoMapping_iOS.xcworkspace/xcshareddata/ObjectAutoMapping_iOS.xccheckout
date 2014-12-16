@@ -14,11 +14,11 @@
 		<string>https://github.com/DongZai/ObjectAutoMapping</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ObjectAutoMapping_iOS/ObjectAutoMapping_iOS.xcworkspace</string>
+	<string>ObjectAutoMapping_iOS.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E02B3AA23EC2AFDDAFFB1DDF118A0B7369FBA54E</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/DongZai/ObjectAutoMapping</string>
