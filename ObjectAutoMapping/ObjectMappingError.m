@@ -35,7 +35,7 @@ NSString* const kObjectMappingTypeMismatch      = @"kObjectMappingTypeMismatch";
 + (id)errorMappingModelIsInvalid {
     return [ObjectMappingError errorWithDomain:ObjectMappingErrorDomain
                                       code:kObjectMappingErrorModelIsInvalid
-                                  userInfo:@{NSLocalizedDescriptionKey:@"Model dose not kind of 'ObjectAutoMapping' class. The custom validation for the input data failed."}];
+                                  userInfo:@{NSLocalizedDescriptionKey:@"Class dose not kind of 'ObjectAutoMapping' class. The custom validation for the input data failed."}];
 }
 
 @end

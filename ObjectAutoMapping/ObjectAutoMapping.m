@@ -25,7 +25,7 @@ static const char * kClassPropertiesKey;
 //@property (nonatomic) id theClass;
 @property (nonatomic, strong) NSMutableDictionary *ralationshipMappingContext;
 @property (nonatomic, strong) NSMutableDictionary *properiesContext;
-@property (nonatomic, copy) NSString *attName;
+@property (nonatomic, copy) NSString *attrobiteClassName;
 
 @end
 
@@ -34,11 +34,11 @@ static const char * kClassPropertiesKey;
 - (void)dealloc {
     [_properiesContext removeAllObjects];
     _properiesContext = nil;
-    _attName = nil;
+    _attrobiteClassName = nil;
     _transformator = nil;
     [_ralationshipMappingContext removeAllObjects];
     _ralationshipMappingContext = nil;
-    NSLog(@"%s", __FUNCTION__);
+    OAMLog(@"%s", __FUNCTION__);
 }
 
 #pragma mark - initalization
@@ -68,12 +68,6 @@ static const char * kClassPropertiesKey;
     if (![sourceObject isKindOfClass:[NSDictionary class]]) {
         if (error)
             *error = [ObjectMappingError errorInvalidDataWithMessage:@"Attempt to initialize JSONModel object using initWithDictionary:error: but the dictionary parameter was not an 'NSDictionary'."];
-        return;
-    }
-    
-    if (![self isKindOfClass:[ObjectAutoMapping class]]) {
-        if (error)
-            *error = [ObjectMappingError errorMappingModelIsInvalid];
         return;
     }
     
@@ -125,7 +119,17 @@ static const char * kClassPropertiesKey;
     if ([_properiesContext[attMapping.destinationKeyPath] integerValue] == MappingPropertyClass) {
         Class relationshipClass = NSClassFromString(_ralationshipMappingContext[attMapping.destinationKeyPath]);
         id relationshipMapping = [relationshipClass new];
-        [relationshipMapping performSelector:@selector(mappingSourceObjectToAttributes:error:) withObject:object withObject:nil];
+        
+        NSError *error;
+        if (![relationshipMapping isKindOfClass:[ObjectAutoMapping class]]) {
+            error = [ObjectMappingError errorMappingModelIsInvalid];
+            OAMLog(@"'%@' Mapping %@", NSStringFromClass(relationshipClass), error);
+            return;
+        }
+        
+        [relationshipMapping mappingSourceObjectToAttributes:object error:&error];
+        if (error) OAMLog(@"'%@' error %@", NSStringFromClass(relationshipClass), error);
+        
         [self setValue:relationshipMapping forKey:attMapping.destinationKeyPath];
     } else {
         id value = [self transformTargetValue:object withPorpertyType:[_properiesContext[attMapping.destinationKeyPath] intValue]];
@@ -137,7 +141,16 @@ static const char * kClassPropertiesKey;
     id containMappingClass = [cRelationshipMapping.containMappingClass new];
     NSMutableArray *contains = [NSMutableArray arrayWithCapacity:1];
     for (NSDictionary *containSourceObject in (NSArray *)object) {
-        [containMappingClass mappingSourceObjectToAttributes:containSourceObject error:nil];
+        NSError *error;
+        if (![containMappingClass isKindOfClass:[ObjectAutoMapping class]]) {
+            error = [ObjectMappingError errorMappingModelIsInvalid];
+            OAMLog(@"'%@' %@", NSStringFromClass([containMappingClass class]), error);
+            continue;
+        }
+        
+        [containMappingClass mappingSourceObjectToAttributes:containSourceObject error:&error];
+        if (error) OAMLog(@"'%@' %@", NSStringFromClass([containMappingClass class]), error);
+        
         [contains addObject:containMappingClass];
     }
     [self setValue:contains forKey:cRelationshipMapping.destinationKeyPath];
@@ -182,8 +195,8 @@ static const char * kClassPropertiesKey;
         MappingPropertyTypes propertyType = [self mappingPorpertyTypeWithAttributeString:attributeItems[0]];
         
         [_properiesContext setObject:@(propertyType) forKey:propertyAttribute];
-        if (_attName) [_ralationshipMappingContext setObject:_attName forKey:propertyAttribute];
-        _attName = nil;
+        if (_attrobiteClassName) [_ralationshipMappingContext setObject:_attrobiteClassName forKey:propertyAttribute];
+        _attrobiteClassName = nil;
     }
     
     free(properties);
@@ -234,7 +247,7 @@ static const char * kClassPropertiesKey;
     propertyType = [self getPropertyTypeByScanResString:resString];
     
     if (propertyType == MappingPropertyClass) {
-        _attName = resString;
+        _attrobiteClassName = resString;
     }
     
     return propertyType;
@@ -272,25 +285,6 @@ static const char * kClassPropertiesKey;
 
 - (NSSet *)getObjectMappingMismatchWithSourceObject:(NSDictionary *)sourceObject {
     NSMutableSet *misMatchs = [[NSMutableSet alloc] init];
-//    for (NSString *sourceKeyPath in sourceObject.allKeys) {
-//        ObjectAttributeMapping *attMapping = [_transformator mappingForAttribute:sourceKeyPath];
-//        if (attMapping) {
-//            if ([_transformator.attributeMappings containsObject:attMapping]) {
-//                if (![_properiesContext.allKeys containsObject:attMapping.destinationKeyPath]) {
-//                    [misMatchs addObject:attMapping.destinationKeyPath];
-//                }
-//            }
-//        } else {
-//            ObjectContainRelationshipMapping *containRelationshipMapping = [_transformator mappingForContainship:sourceKeyPath];
-//            if (![_transformator.attributeMappings containsObject:containRelationshipMapping]) {
-//                if (containRelationshipMapping) {
-//                    if (![_properiesContext.allKeys containsObject:containRelationshipMapping.destinationKeyPath]) {
-//                        [misMatchs addObject:containRelationshipMapping.destinationKeyPath];
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     for (ObjectAttributeMapping *attMapping in _transformator.transformators) {
         if (![sourceObject.allKeys containsObject:attMapping.sourceKeyPath]) {

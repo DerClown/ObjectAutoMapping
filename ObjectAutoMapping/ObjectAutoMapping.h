@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "ObjectAttributeTransformator.h"
 
+
+#if TARGET_IPHONE_SIMULATOR
+#define OAMLog(s, ... ) NSLog( @"[%@:%d] %@", [[NSString stringWithUTF8String:__FILE__] \
+lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define OAMog(s, ... )
+#endif
+
 typedef NS_ENUM(int, MappingPropertyTypes) {
     MappingPropertyUnknow = -1,
     MappingPropertyInt = 0,

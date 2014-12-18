@@ -14,7 +14,7 @@
 - (ObjectAttributeTransformator *)transformator {
     ObjectAttributeTransformator *transformator = [ObjectAttributeTransformator attributeTransformator];
     [transformator mapSourceKeyPath:@"username" toAttribute:@"name"];
-    [transformator mapSourceKeyPath:@"avatar" toContainRelationship:@"new" withContainMappingClass:[ContainshipModel class]];
+    [transformator mapSourceKeyPath:@"avatar" toContainRelationship:@"avatar" withContainMappingClass:[ContainshipModel class]];
     
     return transformator;
 }
