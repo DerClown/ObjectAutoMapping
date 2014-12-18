@@ -25,7 +25,7 @@ static const char * kClassPropertiesKey;
 //@property (nonatomic) id theClass;
 @property (nonatomic, strong) NSMutableDictionary *ralationshipMappingContext;
 @property (nonatomic, strong) NSMutableDictionary *properiesContext;
-@property (nonatomic, copy) NSString *attrobiteClassName;
+@property (nonatomic, copy) NSString *attributeClassName;
 
 @end
 
@@ -34,7 +34,7 @@ static const char * kClassPropertiesKey;
 - (void)dealloc {
     [_properiesContext removeAllObjects];
     _properiesContext = nil;
-    _attrobiteClassName = nil;
+    _attributeClassName = nil;
     _transformator = nil;
     [_ralationshipMappingContext removeAllObjects];
     _ralationshipMappingContext = nil;
@@ -195,8 +195,8 @@ static const char * kClassPropertiesKey;
         MappingPropertyTypes propertyType = [self mappingPorpertyTypeWithAttributeString:attributeItems[0]];
         
         [_properiesContext setObject:@(propertyType) forKey:propertyAttribute];
-        if (_attrobiteClassName) [_ralationshipMappingContext setObject:_attrobiteClassName forKey:propertyAttribute];
-        _attrobiteClassName = nil;
+        if (_attributeClassName) [_ralationshipMappingContext setObject:_attributeClassName forKey:propertyAttribute];
+        _attributeClassName = nil;
     }
     
     free(properties);
@@ -247,7 +247,7 @@ static const char * kClassPropertiesKey;
     propertyType = [self getPropertyTypeByScanResString:resString];
     
     if (propertyType == MappingPropertyClass) {
-        _attrobiteClassName = resString;
+        _attributeClassName = resString;
     }
     
     return propertyType;

@@ -24,8 +24,8 @@
 }
 
 + (ObjectAttributeMapping *)mappingFromKeyPath:(NSString *)sourceKeyPath toKeyPath:(NSString *)destinationKeyPath {
-    ObjectAttributeMapping *mapping = [[self alloc] initWithKeyPath:sourceKeyPath andDestinationKeyPath:destinationKeyPath];
-    return mapping;
+    ObjectAttributeMapping *attMapping = [[self alloc] initWithKeyPath:sourceKeyPath andDestinationKeyPath:destinationKeyPath];
+    return attMapping;
 }
 
 @end

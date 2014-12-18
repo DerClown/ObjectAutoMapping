@@ -62,8 +62,8 @@
     [self addTransformatAttributes:mapping];
 }
 
-- (void)mapSourceKeyPath:(NSString *)sourceKeyPath toContainRelationship:(NSString *)destContainRelationship withContainMappingClass:(Class)containDynamicyMapping {
-    ObjectContainRelationshipMapping *shipMapping = [ObjectContainRelationshipMapping mappingFromKeyPath:sourceKeyPath toKeyPath:destContainRelationship withContainMappingClass:containDynamicyMapping];
+- (void)mapSourceKeyPath:(NSString *)sourceKeyPath toContainRelationshipKeyPath:(NSString *)cRelationshipKeyPath withContainMappingClass:(Class)containDynamicyMapping {
+    ObjectContainRelationshipMapping *shipMapping = [ObjectContainRelationshipMapping mappingFromKeyPath:sourceKeyPath toKeyPath:cRelationshipKeyPath withContainMappingClass:containDynamicyMapping];
     [self addTransformatAttributes:shipMapping];
 }
 

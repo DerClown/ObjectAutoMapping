@@ -11,7 +11,6 @@
 @interface ObjectAttributeMapping : NSObject<NSCopying>
 
 @property (nonatomic, copy) NSString *sourceKeyPath;
-
 @property (nonatomic, copy) NSString *destinationKeyPath;
 
 + (ObjectAttributeMapping *)mappingFromKeyPath:(NSString *)sourceKeyPath toKeyPath:(NSString *)destinationKeyPath;

@@ -24,7 +24,7 @@
 
 - (void)mapSourceKeyPath:(NSString *)sourceKeyPath toAttribute:(NSString *)destinationAttribute;
 
-- (void)mapSourceKeyPath:(NSString *)sourceKeyPath toContainRelationship:(NSString *)destContainRelationship withContainMappingClass:(Class)containDynamicyMapping;
+- (void)mapSourceKeyPath:(NSString *)sourceKeyPath toContainRelationshipKeyPath:(NSString *)cRelationshipKeyPath withContainMappingClass:(Class)containDynamicyMapping;
 
 - (void)addTransformatorAttributes:(ObjectAttributeMapping *)attributeMapping, ... NS_REQUIRES_NIL_TERMINATION;
 
