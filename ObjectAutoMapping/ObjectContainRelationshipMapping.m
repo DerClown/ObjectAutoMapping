@@ -12,10 +12,10 @@
 
 + (ObjectContainRelationshipMapping *)mappingFromKeyPath:(NSString *)sourceKeyPath
                                        toKeyPath:(NSString *)destinationKeyPath
-                                     withContainMappingClass:(Class)containMappingClass {
-    ObjectContainRelationshipMapping *containRelationshipMapping = (ObjectContainRelationshipMapping *)[self mappingFromKeyPath:sourceKeyPath toKeyPath:destinationKeyPath];
-    containRelationshipMapping.containMappingClass = containMappingClass;
-    return containRelationshipMapping;
+                                     withContainMappingClass:(Class)containDynamicyMappingClass {
+    ObjectContainRelationshipMapping *cRelationshipMapping = (ObjectContainRelationshipMapping *)[self mappingFromKeyPath:sourceKeyPath toKeyPath:destinationKeyPath];
+    cRelationshipMapping.containMappingClass = containDynamicyMappingClass;
+    return cRelationshipMapping;
 }
 
 - (id)copyWithZone:(NSZone *)zone {

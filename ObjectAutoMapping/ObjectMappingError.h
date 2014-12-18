@@ -21,18 +21,16 @@ typedef NS_ENUM(int, kObjectMappingErrorTypes)
 extern NSString* const ObjectMappingErrorDomain;
 
 /**
- *  If the source data input not found, check the userInfo
- *  dictionary of the ObjectMappingError instance you get back -
- *  under the kObjectMappingErrorInvalidSourceData key you will
- *  find a description of the source data.
+ *  If the source data input not found, check the userInfo dictionary of the ObjectMappingError
+ *  instance you get back under the kObjectMappingErrorInvalidSourceData key you will find a -
+ *  description of the source data.
  */
 extern NSString* const ObjectMappingInvalidSourceData;
 
 /**
- * If Mapping input has a different type than expected by the model, check the
- * userInfo dictionary of the ObjectMappingError instance you get back -
- * under the kObjectMappingTypeMismatch key you will find a description
- * of the mismatched types.
+ * If Mapping input has a different type than expected by the model, check the userInfo dictionary
+ * of the ObjectMappingError instance you get back under the kObjectMappingTypeMismatch key you will
+ * find a description of the mismatched types.
  */
 extern NSString* const kObjectMappingTypeMismatch;
 

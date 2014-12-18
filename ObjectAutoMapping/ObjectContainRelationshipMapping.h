@@ -16,6 +16,6 @@
 
 + (ObjectContainRelationshipMapping *)mappingFromKeyPath:(NSString *)sourceKeyPath
                                         toKeyPath:(NSString *)destinationKeyPath
-                                      withContainMappingClass:(Class)containMappingClass;
+                                      withContainMappingClass:(Class)containDynamicyMappingClass;
 
 @end
