@@ -28,9 +28,9 @@
 
 - (void)addTransformatorAttributes:(ObjectAttributeMapping *)attributeMapping, ... NS_REQUIRES_NIL_TERMINATION;
 
-- (ObjectAttributeMapping *)mappingForAttribute:(NSString *)sourceKeyPath;
+- (ObjectAttributeMapping *)mappingForAttribute:(NSString *)attributeKey;
 
-- (ObjectContainRelationshipMapping *)mappingForContainship:(NSString *)sourceKeyPath;
+- (ObjectContainRelationshipMapping *)mappingForContainshipAttribute:(NSString *)attributeKey;
 
 - (BOOL)isExistAttributeForDestinationKeyPath:(NSString *)destinationKeyPath;
 

@@ -69,7 +69,7 @@
 
 - (ObjectAttributeMapping *)mappingForAttribute:(NSString *)attributeKey {
     for (ObjectAttributeMapping *mapping in [self attributeMappings]) {
-        if ([mapping.sourceKeyPath isEqualToString:attributeKey]) {
+        if ([mapping.destinationKeyPath isEqualToString:attributeKey]) {
             return mapping;
         }
     }
@@ -77,9 +77,9 @@
     return nil;
 }
 
-- (ObjectContainRelationshipMapping *)mappingForContainship:(NSString *)sourceKeyPath {
+- (ObjectContainRelationshipMapping *)mappingForContainshipAttribute:(NSString *)attributeKey {
     for (ObjectContainRelationshipMapping *shipMaping in [self containshipMappings]) {
-        if ([shipMaping.sourceKeyPath isEqualToString:sourceKeyPath]) {
+        if ([shipMaping.destinationKeyPath isEqualToString:attributeKey]) {
             return shipMaping;
         }
     }

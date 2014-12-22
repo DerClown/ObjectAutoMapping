@@ -57,6 +57,8 @@ static const char * kClassPropertiesKey;
     return self;
 }
 
+#pragma mark - Mapping methods
+
 - (void)mappingSourceObjectToAttributes:(id)sourceObject error:(NSError **)error {
     //check for nil input
     if (!sourceObject) {
@@ -90,24 +92,45 @@ static const char * kClassPropertiesKey;
 - (void)mappingAttributesWithSourceObject:(NSDictionary *)sourceObject {
     //NSDictionary *properties = objc_getAssociatedObject(_theClass, &kClassPropertiesKey);
     if (_properiesContext && _properiesContext.count > 0) {
-        for (NSString *sourceKeyPath in [sourceObject allKeys]) {
-            ObjectAttributeMapping *attMapping = [_transformator mappingForAttribute:sourceKeyPath];
+        for (NSString *attribute in _properiesContext.allKeys) {
+            ObjectAttributeMapping *attMapping = [_transformator mappingForAttribute:attribute];
             
             if (!attMapping) {
-                ObjectContainRelationshipMapping *cRelationshiMapping = [_transformator mappingForContainship:sourceKeyPath];
-                if (!cRelationshiMapping || ![sourceObject[sourceKeyPath] isKindOfClass:[NSArray class]]) {
+                ObjectContainRelationshipMapping *cRelationshiMapping = [_transformator mappingForContainshipAttribute:attribute];
+                if (!cRelationshiMapping || ![sourceObject[cRelationshiMapping.sourceKeyPath] isKindOfClass:[NSArray class]]) {
                     continue;
                 }
                 
-                if (![_properiesContext.allKeys containsObject:cRelationshiMapping.destinationKeyPath]) {
+                if (![sourceObject.allKeys containsObject:cRelationshiMapping.sourceKeyPath]) {
                     continue;
                 }
                 
-                [self containRelationshipMapping:cRelationshiMapping withObject:sourceObject[sourceKeyPath]];
+                [self containRelationshipMapping:cRelationshiMapping withObject:sourceObject[cRelationshiMapping.sourceKeyPath]];
             } else {
-                if (![_properiesContext.allKeys containsObject:attMapping.destinationKeyPath]) continue;
+                id attSourceObject = sourceObject[attMapping.sourceKeyPath];
                 
-                [self attributeMapping:attMapping withObject:sourceObject[sourceKeyPath]];
+                NSString *sourceKeyPath = attMapping.sourceKeyPath;
+                if ([sourceKeyPath rangeOfString:@"."].location != NSNotFound) {
+                    NSArray *sourceKeys = [attMapping.sourceKeyPath componentsSeparatedByString:@"."];
+                    sourceKeyPath = sourceKeys.firstObject;
+                    
+                    if (![[sourceObject objectForKey:sourceKeys.firstObject] isKindOfClass:[NSDictionary class]] || sourceKeys.count < 2) {
+                        continue;
+                    }
+                    
+                    NSDictionary *destDic = [sourceObject objectForKey:sourceKeys.firstObject];
+                    if (sourceKeys.count > 2) {
+                        for (int i = 0; i < sourceKeys.count - 2; i ++) {
+                            destDic = [destDic objectForKey:sourceKeys[i+1]];
+                        }
+                    }
+                    
+                    attSourceObject = [destDic objectForKey:sourceKeys.lastObject];
+                }
+                
+                if (![sourceObject.allKeys containsObject:sourceKeyPath]) continue;
+                
+                [self attributeMapping:attMapping withObject:attSourceObject];
             }
         }
     }

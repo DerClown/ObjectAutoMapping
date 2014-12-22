@@ -13,6 +13,9 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *country;
 
+@property (nonatomic, copy) NSString *zone;
+@property (nonatomic, copy) NSString *sign;
+
 @property (nonatomic, strong) NSArray *otherInfos;
 
 @end

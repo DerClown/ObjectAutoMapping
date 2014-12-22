@@ -26,7 +26,7 @@
     NSError *errorMsg;
     
     NSLog(@"*********************CustomJsonModel****************************\r");
-    CustomJsonModel *customModel = [[CustomJsonModel alloc] initWithSoureceObject:@{@"name":@"小红", @"country":@"中国", @"otherInfos":@[@"我", @"你", @"他"]} error:&errorMsg];
+    CustomJsonModel *customModel = [[CustomJsonModel alloc] initWithSoureceObject:@{@"name":@"小红", @"country":@"中国", @"otherInfos":@[@"我", @"你", @"他"], @"personal_infon":@{@"sign":@"sign0001", @"zone":@"zone0001"}} error:&errorMsg];
     NSLog(@"\r %@ \r", customModel);
     
     
