@@ -115,10 +115,8 @@
                     }
                     
                     NSDictionary *destDic = [sourceObject objectForKey:sourceKeys.firstObject];
-                    if (sourceKeys.count > 2) {
-                        for (int i = 0; i < sourceKeys.count - 2; i ++) {
-                            destDic = [destDic objectForKey:sourceKeys[i+1]];
-                        }
+                    for (int i = 0; i < sourceKeys.count - 2; i ++) {
+                        destDic = [destDic objectForKey:sourceKeys[i+1]];
                     }
                     
                     attSourceObject = [destDic objectForKey:sourceKeys.lastObject];
@@ -289,11 +287,31 @@
     NSMutableSet *misMatchs = [[NSMutableSet alloc] init];
     
     for (ObjectAttributeMapping *attMapping in _transformator.transformators) {
-        if (![sourceObject.allKeys containsObject:attMapping.sourceKeyPath]) {
-            [misMatchs addObject:attMapping.destinationKeyPath];
-        } else {
-            if (![_propertyValueContexts.allKeys containsObject:attMapping.destinationKeyPath]) {
+        if ([attMapping.sourceKeyPath rangeOfString:@"."].location != NSNotFound) {
+            NSArray *keys = [attMapping.sourceKeyPath componentsSeparatedByString:@"."];
+            if (![sourceObject.allKeys containsObject:keys[0]] || ![sourceObject[keys[0]] isKindOfClass:[NSDictionary class]]) {
                 [misMatchs addObject:attMapping.destinationKeyPath];
+            } else {
+                NSDictionary *dic = sourceObject[keys.firstObject];
+                for (int i = 0; i < keys.count - 2; i ++) {
+                    dic = [dic objectForKey:keys[i+1]];
+                    if (!dic) {
+                        [misMatchs addObject:attMapping.destinationKeyPath];
+                        break;
+                    }
+                }
+                
+                if (dic && ![dic.allKeys containsObject:keys.lastObject]) {
+                    [misMatchs addObject:attMapping.destinationKeyPath];
+                }
+            }
+        } else {
+            if (![sourceObject.allKeys containsObject:attMapping.sourceKeyPath]) {
+                [misMatchs addObject:attMapping.destinationKeyPath];
+            } else {
+                if (![_propertyValueContexts.allKeys containsObject:attMapping.destinationKeyPath]) {
+                    [misMatchs addObject:attMapping.destinationKeyPath];
+                }
             }
         }
     }
