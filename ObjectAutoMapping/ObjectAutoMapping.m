@@ -20,8 +20,10 @@
 @interface ObjectAutoMapping()
 
 @property (nonatomic, strong) ObjectAttributeTransformator *transformator;
-@property (nonatomic, strong) NSMutableDictionary *ralationshipMappingContexts;
-@property (nonatomic, strong) NSMutableDictionary *propertyValueContexts;
+
+@property (nonatomic, strong) NSMutableDictionary *ralationshipAttContexts;
+@property (nonatomic, strong) NSMutableDictionary *attributeContexts;
+
 @property (nonatomic, copy) NSString *mappingClassName;
 
 @end
@@ -29,13 +31,16 @@
 @implementation ObjectAutoMapping
 
 - (void)dealloc {
-    [_propertyValueContexts removeAllObjects];
-    _propertyValueContexts = nil;
-    _mappingClassName = nil;
-    _transformator = nil;
-    [_ralationshipMappingContexts removeAllObjects];
-    _ralationshipMappingContexts = nil;
     OAMLog(@"%s", __FUNCTION__);
+    
+    _transformator = nil;
+    _mappingClassName = nil;
+    
+    [_attributeContexts removeAllObjects];
+    _attributeContexts = nil;
+    
+    [_ralationshipAttContexts removeAllObjects];
+    _ralationshipAttContexts = nil;
 }
 
 #pragma mark - initalization
@@ -71,7 +76,7 @@
     }
     
     //check for class properties
-    if (_propertyValueContexts.count == 0) {
+    if (_attributeContexts.count == 0) {
         if (error)
             *error = [ObjectMappingError errorWithUnMappableContent];
         return;
@@ -87,8 +92,8 @@
 }
 
 - (void)mappingAttributesWithSourceObject:(NSDictionary *)sourceObject {
-    if (_propertyValueContexts && _propertyValueContexts.count > 0) {
-        for (NSString *attribute in _propertyValueContexts.allKeys) {
+    if (_attributeContexts && _attributeContexts.count > 0) {
+        for (NSString *attribute in _attributeContexts.allKeys) {
             ObjectAttributeMapping *attMapping = [_transformator mappingForAttribute:attribute];
             
             if (!attMapping) {
@@ -131,8 +136,8 @@
 }
 
 - (void)attributeMapping:(ObjectAttributeMapping *)attMapping withObject:(id)object {
-    if ([_propertyValueContexts[attMapping.destinationKeyPath] integerValue] == MappingPropertyClass) {
-        Class relationshipClass = NSClassFromString(_ralationshipMappingContexts[attMapping.destinationKeyPath]);
+    if ([_attributeContexts[attMapping.destinationKeyPath] integerValue] == MappingPropertyClass) {
+        Class relationshipClass = NSClassFromString(_ralationshipAttContexts[attMapping.destinationKeyPath]);
         id relationshipMapping = [relationshipClass new];
         
         NSError *error;
@@ -147,7 +152,7 @@
         
         [self setValue:relationshipMapping forKey:attMapping.destinationKeyPath];
     } else {
-        id value = [self transformTargetValue:object withPorpertyType:[_propertyValueContexts[attMapping.destinationKeyPath] intValue]];
+        id value = [self transformTargetValue:object withPorpertyType:[_attributeContexts[attMapping.destinationKeyPath] intValue]];
         [self setValue:value forKey:attMapping.destinationKeyPath];
     }
 }
@@ -185,14 +190,14 @@
 }
 
 - (void)inspectProperties {
-    if (!_propertyValueContexts || _propertyValueContexts.count == 0) {
+    if (!_attributeContexts || _attributeContexts.count == 0) {
         [self setupProperties];
     }
 }
 
 - (void)setupProperties {
-    _propertyValueContexts = [NSMutableDictionary dictionary];
-    _ralationshipMappingContexts = [NSMutableDictionary dictionary];
+    _attributeContexts = [NSMutableDictionary dictionary];
+    _ralationshipAttContexts = [NSMutableDictionary dictionary];
     unsigned int propertyCount;
     NSString *className = NSStringFromClass([self class]);
     const char *cClassName = [className UTF8String];
@@ -209,8 +214,8 @@
         NSArray *attributeItems = [attriburtes componentsSeparatedByString:@","];
         MappingPropertyTypes propertyType = [self mappingPorpertyTypeWithAttributeString:attributeItems[0]];
         
-        [_propertyValueContexts setObject:@(propertyType) forKey:propertyAttribute];
-        if (_mappingClassName) [_ralationshipMappingContexts setObject:_mappingClassName forKey:propertyAttribute];
+        [_attributeContexts setObject:@(propertyType) forKey:propertyAttribute];
+        if (_mappingClassName) [_ralationshipAttContexts setObject:_mappingClassName forKey:propertyAttribute];
         _mappingClassName = nil;
     }
     
@@ -220,7 +225,7 @@
 - (void)inspectTransformators {
     _transformator = [self transformator] ? [self transformator] : [ObjectAttributeTransformator attributeTransformator];
     
-    for (NSString *destinationKey in [_propertyValueContexts allKeys]) {
+    for (NSString *destinationKey in [_attributeContexts allKeys]) {
         ObjectAttributeMapping *attribute = [ObjectAttributeMapping mappingFromKeyPath:destinationKey toKeyPath:destinationKey];
         if ([_transformator isExistAttributeForDestinationKeyPath:destinationKey]) continue;
         [_transformator addTransformatorAttributes:attribute, nil];
@@ -309,7 +314,7 @@
             if (![sourceObject.allKeys containsObject:attMapping.sourceKeyPath]) {
                 [misMatchs addObject:attMapping.destinationKeyPath];
             } else {
-                if (![_propertyValueContexts.allKeys containsObject:attMapping.destinationKeyPath]) {
+                if (![_attributeContexts.allKeys containsObject:attMapping.destinationKeyPath]) {
                     [misMatchs addObject:attMapping.destinationKeyPath];
                 }
             }

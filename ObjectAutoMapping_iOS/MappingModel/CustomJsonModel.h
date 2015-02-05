@@ -18,4 +18,8 @@
 
 @property (nonatomic, strong) NSArray *otherInfos;
 
+@property (nonatomic, strong) NSSet *sudents;
+
+@property (nonatomic, strong) NSOrderedSet *otherSet;
+
 @end
